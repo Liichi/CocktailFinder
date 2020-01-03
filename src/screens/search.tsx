@@ -1,4 +1,4 @@
-import React,{useState, useCallback, Component} from 'react';
+import React,{useState, useCallback,Component} from 'react';
 import {View,Text,StyleSheet,Button} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 
@@ -6,19 +6,15 @@ interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-class IndexScreen extends React.Component<Props> {
-    handleSearch = () => {
-        console.log('test');
-        this.props.navigation.navigate('Search');
-    }
-
+class SearchScreen extends React.Component<Props>{
     render(){
-        return(
+        return (
             <View style={styles.home}>
-                <Button onPress={() => {this.handleSearch()} } title='Go TO Search'></Button>
+                <Button onPress={() => {}} title='Go TO Index'></Button>
             </View>
         );
     }
+    
 };
 
 const styles = StyleSheet.create({
@@ -29,4 +25,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default IndexScreen;
+export default SearchScreen;
