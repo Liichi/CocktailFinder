@@ -1,11 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import Index from './src/screens/index';
+import AppNavigator from './src/navigation/Navigation';
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+	<AppNavigator/>
+    /*<View style={styles.container}>
+	
+	<Text>dsadsadsa:D:D222</Text>
+    </View>*/
   );
 }
 
