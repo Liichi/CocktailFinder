@@ -7,6 +7,10 @@ interface Props {
 }
 
 class IndexScreen extends React.Component<Props> {
+    static navigationOptions = {
+        title: 'Home',
+    };
+
     handleSearch = () => {
         console.log('test');
         this.props.navigation.navigate('Search');
