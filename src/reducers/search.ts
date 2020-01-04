@@ -20,10 +20,19 @@ export const initialState: State = {
 const fetchReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case 'CANCEL_FETCH':
+      console.log('cancel action');
       return { cocktails: [], isFetching: false }
     case 'START_FETCH':
-      //TODO FETCH
+      //TODO FETCH & DISPLAY LOAD SPIN
+      console.log('search action');
       return { cocktails: [], isFetching: true }
+    case 'SUCCESS_FETCH':
+      //TODO FETCH
+      console.log('success action');
+      return { cocktails: [], isFetching: false }
+    case 'ERROR_FETCH':
+      console.log('ERROR');
+      return { cocktails: [], isFetching: false }
     default:
       return state;
   }
