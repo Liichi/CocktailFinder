@@ -45,4 +45,6 @@ target 'CocktailFinder' do
   use_unimodules!
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
 end

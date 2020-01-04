@@ -29,16 +29,16 @@ class SearchBar extends React.Component<Props> {
 
     render() {
         return (
-            <View style={sbStyle.sbar}>
-                <Icon style={sbStyle.sicon} name="ios-search" color="#ccc" size={25} />
-                <TextInput onChangeText={text => this.onChangeText({ text })} style={sbStyle.sbar} placeholder='Search'></TextInput>
+            <View style={styles.searchBar}>
+                <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={25} />
+                <TextInput onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'></TextInput>
             </View>
         );
     }
 }
 
-const sbStyle = StyleSheet.create({
-    sbar: {
+const styles = StyleSheet.create({
+    searchBar: {
         flex: 1,
         width: '100%',
         marginLeft: 0,
@@ -50,7 +50,7 @@ const sbStyle = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#e8e8e8'
     },
-    sicon: {
+    searchIcon: {
         marginLeft: 10,
         marginRight: 10
     }

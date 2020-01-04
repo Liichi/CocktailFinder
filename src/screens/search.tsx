@@ -2,6 +2,7 @@ import React,{useState, useCallback,Component} from 'react';
 import {View,SafeAreaView,Text,StyleSheet,Button} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -14,21 +15,43 @@ class SearchScreen extends React.Component<Props>{
 
     render(){
         return (
-            <SafeAreaView style={{flex:1}}>
-                <Header navigation={this.props.navigation}/>
-                <View style={styles.home}>
-                    <Text>body</Text>
-                </View>
-            </SafeAreaView>
+            <View style={styles.searchScreen}>
+                <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']} style={styles.linearGradient} >  
+                    <SafeAreaView style={{flex:1}}>
+                        <View style={styles.headerView}>
+                            <Header navigation={this.props.navigation}/>
+                        </View>
+                        <View style={styles.body}>
+                            <Text>BODY</Text>
+                        </View>
+                    </SafeAreaView>
+                </LinearGradient>
+            </View>
         );
     }
 };
 
 const styles = StyleSheet.create({
-    home: {
+    searchScreen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'white',
+        marginBottom: 5
+    },
+    headerView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        maxHeight: 80
+    },
+    body:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+        width: '100%'
     }
 });
 

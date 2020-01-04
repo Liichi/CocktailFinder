@@ -2,6 +2,8 @@ import React,{useState, useCallback, Component} from 'react';
 import {View,Text,StyleSheet,Button,TouchableOpacity,SafeAreaView,TextInput} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import Icon from "react-native-vector-icons/Ionicons";
+import Icon2 from "react-native-vector-icons/FontAwesome5";
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -10,6 +12,7 @@ interface Props {
 class IndexScreen extends React.Component<Props> {
     static navigationOptions = {
         title: 'Home',
+        headerShown: false
     };
 
     handleSearch = () => {
@@ -19,30 +22,51 @@ class IndexScreen extends React.Component<Props> {
 
     render(){
         return(
-            <SafeAreaView style={styles.home}>
-                <TouchableOpacity onPress={() => {this.handleSearch()}}>
-                    <View style={sbStyle.sbar}>
-                        <Icon style={sbStyle.sicon} name="ios-search" color="#ccc" size={25} />
-                        <TextInput onChangeText={text => this.onChangeText({ text })} style={sbStyle.sbar} placeholder='Search'></TextInput>
-                    </View>
-                </TouchableOpacity>
-            </SafeAreaView>
+            <View style={styles.index}>
+                <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']} style={styles.background} >
+                    <SafeAreaView style={styles.index}>
+                        <Icon2 style={styles.cocktailIcon} name="cocktail" color="white" size={40} />
+                        <Text style={styles.title}>
+                            <Text style={styles.titleBold}>Cocktail</Text>
+                            Finder
+                        </Text>
+                        <TouchableOpacity onPress={() => {this.handleSearch()}}>
+                            <View style={styles.searchBar}>
+                                <Icon style={styles.searchIcon} name="ios-search" color="red" size={25} />
+                                <Text style={styles.searchBar}>Search your favorite cocktail</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </SafeAreaView>
+                </LinearGradient>
+            </View>
         );
     }
 };
 
 const styles = StyleSheet.create({
-    home: {
+    index: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
-
-const sbStyle = StyleSheet.create({
-    sbar: {
+        alignItems: 'center',
+        backgroundColor: 'transparent'
+    },
+    title: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: '100',
+        marginBottom: 15
+    },
+    titleBold:{
+        fontWeight: 'bold'
+    },
+    background: {
         flex: 1,
-        width: '100%',
+        minWidth: '100%'
+    },
+    searchBar: {
+        flex: 1,
+        width: '90%',
+        maxHeight: 50,
         marginLeft: 0,
         justifyContent: 'center',
         alignItems: 'center',
@@ -52,9 +76,12 @@ const sbStyle = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#e8e8e8'
     },
-    sicon: {
+    searchIcon: {
         marginLeft: 10,
         marginRight: 10
+    },
+    cocktailIcon: {
+        marginBottom: 10
     }
 });
 

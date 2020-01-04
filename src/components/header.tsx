@@ -33,34 +33,40 @@ class Header extends React.Component<Props> {
 
     render() {
         return (
-            <View style={sbStyle.header}>
+            <View style={styles.header}>
                 <TouchableOpacity onPress={this.onBack}>
-                    <Icon style={sbStyle.sicon} name="md-arrow-back" color="#000" size={25} />
+                    <Icon style={styles.backButton} name="md-arrow-back" color="#000" size={25} />
                 </TouchableOpacity>
                 <SearchBar/>
-                <Button onPress={this.onCancel} style={sbStyle.cc} title='Cancel'>Cancel</Button>
+                <TouchableOpacity onPress={this.onCancel}>
+                    <Text style={styles.cancelButton} >Cancel</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
 
-const sbStyle = StyleSheet.create({
+const styles = StyleSheet.create({
     header: {
         flex:1,
-        marginTop: 15,
+        marginTop: 30,
         minWidth: '90%',
-        marginLeft: 10,
-        marginRight: 30,
+        marginLeft: 15,
+        marginRight: 15,
         height: 10,
         maxHeight: 40,
         flexDirection: 'row',
-        //backgroundColor: '#222222',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    cc: {
+    cancelButton: {
         color: 'red',
-        marginLeft: 10
+        marginLeft: 5,
+        fontSize: 17
+    },
+    backButton: {
+        marginLeft: 0,
+        marginRight: 10
     }
 });
 
