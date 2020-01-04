@@ -1,8 +1,10 @@
 import React,{useState, useCallback,Component} from 'react';
-import {View,SafeAreaView,Text,StyleSheet,Button} from 'react-native';
+import {View,SafeAreaView,Text,StyleSheet,Button,ScrollView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
+
+import Cocktail from '../components/cocktail'
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -22,7 +24,21 @@ class SearchScreen extends React.Component<Props>{
                             <Header navigation={this.props.navigation}/>
                         </View>
                         <View style={styles.body}>
-                            <Text>BODY</Text>
+                            <ScrollView>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                                <Cocktail/>
+                            </ScrollView>
+                            
                         </View>
                     </SafeAreaView>
                 </LinearGradient>

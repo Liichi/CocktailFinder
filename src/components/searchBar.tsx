@@ -1,6 +1,5 @@
 import {TextInput} from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
-import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import React,{useState, useCallback,Component} from 'react';
 import {View,Text,StyleSheet,Button,TouchableOpacity} from 'react-native';
 
@@ -8,12 +7,8 @@ interface State {
     searchText : string
 }
 
-interface Props {
-    navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
-
-class SearchBar extends React.Component<Props> {
-    constructor(props){
+class SearchBar extends React.Component {
+    constructor(){
         super();
 
         this.state = {
