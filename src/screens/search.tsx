@@ -14,38 +14,68 @@ class SearchBar extends React.Component {
     render() {
         return (
             <View style={sbStyle.sbar}>
-                <Icon
-                    name="ios-search"
-                    color="#ccc"
-                    size={25}
-                />
-                <TextInput>text input</TextInput>
+                <Icon style={sbStyle.sicon} name="ios-search" color="#ccc" size={25} />
+                <TextInput style={sbStyle.sbar} placeholder='Search'></TextInput>
             </View>
-            
+        );
+    }
+}
+
+class Header extends React.Component {
+    render() {
+        return (
+            <View style={sbStyle.header}>
+                <SearchBar/>
+                <Text style={sbStyle.cc}>Cancel</Text>
+            </View>
         );
     }
 }
 
 const sbStyle = StyleSheet.create({
-    sbar: {
-        flex: 1,
+    header: {
+        flex:1,
+        minWidth: '90%',
+        marginLeft: 30,
+        marginRight: 30,
+        height: 10,
+        maxHeight: 40,
         flexDirection: 'row',
-        margin: 5,
-        backgroundColor: '#edeff2',
+        //backgroundColor: '#222222',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    sbar: {
+        flex: 1,
+        width: '100%',
+        marginLeft: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#e8e8e8',
+        borderRadius:6,
+        borderWidth: 1,
+        borderColor: '#e8e8e8'
+    },
+    sicon: {
+        marginLeft: 10,
+        marginRight: 10
+    },
+    cc: {
+        color: 'red',
+        marginLeft: 10
     }
 });
 
 class SearchScreen extends React.Component<Props>{
     static navigationOptions = {
-        headerTitle: () => <SearchBar/>
+        headerShown: false
     };
 
     render(){
         return (
             <View style={styles.home}>
-                <Button onPress={() => {}} title='Go TO Index'></Button>
+                <Header/>
             </View>
         );
     }
