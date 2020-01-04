@@ -33,7 +33,7 @@ class IndexScreen extends React.Component<Props> {
                         <TouchableOpacity onPress={() => {this.handleSearch()}}>
                             <View style={styles.searchBar}>
                                 <Icon style={styles.searchIcon} name="ios-search" color="red" size={25} />
-                                <Text style={styles.searchBar}>Search your favorite cocktail</Text>
+                                <Text style={styles.searchText}>Search your favorite cocktail</Text>
                             </View>
                         </TouchableOpacity>
                     </SafeAreaView>
@@ -75,6 +75,11 @@ const styles = StyleSheet.create({
         borderRadius:6,
         borderWidth: 1,
         borderColor: '#e8e8e8'
+    },
+    searchText: {
+        flex: 1,
+        width: '100%',
+        marginLeft: 0
     },
     searchIcon: {
         marginLeft: 10,
