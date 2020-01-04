@@ -4,7 +4,7 @@ import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navi
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Cocktail from '../components/cocktail'
+import Cocktail from '../components/cocktail/cocktail'
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
