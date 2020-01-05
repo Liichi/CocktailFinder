@@ -1,5 +1,5 @@
 import React,{useState, useCallback,Component} from 'react';
-import {View,SafeAreaView,Text,StyleSheet,Button,ScrollView} from 'react-native';
+import {View,SafeAreaView,Text,StyleSheet,Button,ScrollView,FlatList} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -14,7 +14,7 @@ import { SearchState } from '../reducers/search';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-    stext : string
+    data : CocktailData[]
 }
 
 interface State{
@@ -34,6 +34,7 @@ class SearchScreen extends React.Component<Props,State>{
     cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
 
     render(){
+        console.log(this.props.data);
         return (
             <View style={styles.searchScreen}>
                 <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']} style={styles.linearGradient} >  
@@ -42,10 +43,13 @@ class SearchScreen extends React.Component<Props,State>{
                             <Header navigation={this.props.navigation}/>
                         </View>
                         <View style={styles.body}>
-                            <ScrollView>
-                                <Cocktail data={this.cdata}/>
-                            </ScrollView>
-                            <Text>{this.props.stext} => test</Text>
+                            <FlatList
+                                data={this.props.data}
+                                //keyExtractor={(item, index) => item.id}
+                                renderItem={(item) => (
+                                    <Cocktail data={item.item}></Cocktail>
+                                )}
+                            />
                         </View>
                     </SafeAreaView>
                 </LinearGradient>
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: RootState, props: Props) => ({
-    stext: state.search.searchText
+    data : state.search.cocktails
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({

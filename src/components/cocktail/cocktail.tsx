@@ -17,10 +17,7 @@ class Cocktail extends React.Component<Props>{
     render() {
         return (
             <View style={styles.cocktail}>
-                <Image
-                    style={styles.thumb}
-                    source={{uri: 'https://www.thecocktaildb.com/images/media/drink/9179i01503565212.jpg'}}
-                    />
+                <Image style={styles.thumb} source={{uri: this.props.data.thumbURL}}/>
                 <Text>{this.props.data.name}</Text>
             </View>
         );
@@ -37,6 +34,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius:8,
         backgroundColor: 'white',
+        margin: 90,
         maxHeight: 50,
         minHeight: 150,
         flexDirection: 'row',
