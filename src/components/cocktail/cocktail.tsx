@@ -3,18 +3,15 @@ import Icon from "react-native-vector-icons/Ionicons";
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import React,{useState, useCallback,Component} from 'react';
 import {View,Text,StyleSheet,Button,TouchableOpacity,Image} from 'react-native';
+import { CocktailData } from './cocktailData';
 
-interface State {
-    searchText : string
+interface Props {
+    data : CocktailData
 }
 
-class Cocktail extends React.Component{
+class Cocktail extends React.Component<Props>{
     constructor(props){
         super(props);
-
-        this.state = {
-            searchText: ''
-        };
     }
 
     render() {
@@ -24,7 +21,7 @@ class Cocktail extends React.Component{
                     style={styles.thumb}
                     source={{uri: 'https://www.thecocktaildb.com/images/media/drink/9179i01503565212.jpg'}}
                     />
-                <Text>Long Vodka</Text>
+                <Text>{this.props.data.name}</Text>
             </View>
         );
     }

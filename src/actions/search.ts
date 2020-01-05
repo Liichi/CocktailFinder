@@ -27,7 +27,7 @@ export interface CancelFetch {
 
 export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch;
 
-export function successFetchFN(searchText: string,newCocktails: CocktailData[]): ActionTypes {
+export function successFetchAction(searchText: string,newCocktails: CocktailData[]): ActionTypes {
   return {
     type: 'SUCCESS_FETCH',
     cocktails: newCocktails,
@@ -35,7 +35,7 @@ export function successFetchFN(searchText: string,newCocktails: CocktailData[]):
   }
 }
 
-export function startFetchFN(searchText: string): ActionTypes {
+export function startFetchAction(searchText: string): ActionTypes {
   return {
     type: 'START_FETCH',
     searchText
@@ -45,7 +45,7 @@ export function startFetchFN(searchText: string): ActionTypes {
 export const startFetch = (
   searchText: string//, controller: AbortController
 ): ThunkAction<void, RootState, null, Action > => async dispatch => {
-  dispatch(startFetchFN(searchText));
+  dispatch(startFetchAction(searchText));
   const response = await fetch(
     'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
   )
@@ -65,6 +65,6 @@ export const startFetch = (
     for (let cocktail of searchResult) {
       console.log(cocktail.thumbURL);
     }
-    dispatch(successFetchFN(searchText,searchResult));
+    dispatch(successFetchAction(searchText,searchResult));
   }
 }

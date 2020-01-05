@@ -6,6 +6,8 @@ import {startFetch, ActionTypes} from '../actions/search'
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
+import {SearchState} from '../reducers/search'
+import { RootState } from '../store/store';
 
 interface State {
     searchText : string,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (state: State, props: Props) => ({
+const mapStateToProps = (state: RootState, props: Props) => ({
     //searchString : props.searchString
 });
 

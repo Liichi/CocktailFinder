@@ -4,15 +4,34 @@ import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navi
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 import Cocktail from '../components/cocktail/cocktail'
+import { CocktailData } from '../components/cocktail/cocktailData';
+import { ThunkDispatch } from 'redux-thunk';
+import { ActionTypes } from '../actions/search';
+import { connect } from 'react-redux';
+import store, { RootState } from '../store/store';
+import { bindActionCreators } from 'redux';
+import { SearchState } from '../reducers/search';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+    stext : string
 }
 
-class SearchScreen extends React.Component<Props>{
+interface State{
+    
+}
+
+class SearchScreen extends React.Component<Props,State>{
+    constructor(props){
+        super(props);
+        //const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(false);
+        //cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
+    }
+
     static navigationOptions = {
         headerShown: false
     };
+    cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
 
     render(){
         return (
@@ -24,20 +43,9 @@ class SearchScreen extends React.Component<Props>{
                         </View>
                         <View style={styles.body}>
                             <ScrollView>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
-                                <Cocktail/>
+                                <Cocktail data={this.cdata}/>
                             </ScrollView>
-                            
+                            <Text>{this.props.stext} => test</Text>
                         </View>
                     </SafeAreaView>
                 </LinearGradient>
@@ -70,4 +78,13 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SearchScreen;
+const mapStateToProps = (state: RootState, props: Props) => ({
+    stext: state.search.searchText
+});
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
+    //startFetch: bindActionCreators(startFetch, dispatch)
+    //getSearchText: bindActionCreators()
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(SearchScreen);

@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import search, { State as SearchState } from '../reducers/search'
+import search, { SearchState } from '../reducers/search'
 import thunk from 'redux-thunk'
 
 export interface RootState {
