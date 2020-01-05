@@ -1,8 +1,8 @@
 import React,{} from 'react';
 import {View,Text,StyleSheet,TouchableOpacity,SafeAreaView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
-import Icon from "react-native-vector-icons/Ionicons";
-import Icon2 from "react-native-vector-icons/FontAwesome5";
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
@@ -11,7 +11,6 @@ interface Props {
 
 class IndexScreen extends React.Component<Props> {
     static navigationOptions = {
-        title: 'Home',
         headerShown: false
     };
 
