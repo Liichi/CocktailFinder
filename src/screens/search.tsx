@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,SafeAreaView,StyleSheet,FlatList} from 'react-native';
+import {View,SafeAreaView,StyleSheet,FlatList,Text} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,6 +13,7 @@ import { RootState } from '../store/store';
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
     data : CocktailData[]
+    error : boolean
 }
 
 interface State{
@@ -37,6 +38,12 @@ class SearchScreen extends React.Component<Props,State>{
                         <View style={styles.headerView}>
                             <Header navigation={this.props.navigation}/>
                         </View>
+                        {this.props.error &&
+                            <View style={styles.error}>
+                                <Text style={styles.errorText}>Connection Error</Text>
+                            </View>
+                        }
+                        
                         <View style={styles.body}>
                             <FlatList
                                 data={this.props.data}
@@ -54,7 +61,8 @@ class SearchScreen extends React.Component<Props,State>{
 };
 
 const mapStateToProps = (state: RootState, props: Props) => ({
-    data : state.search.cocktails
+    data : state.search.cocktails,
+    error : state.search.error
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
@@ -75,6 +83,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         maxHeight: 80
+    },
+    error:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'red',
+        maxHeight: 40
+    },
+    errorText:{
+        fontSize: 15,
+        color: 'white'
     },
     body:{
         flex: 1,
