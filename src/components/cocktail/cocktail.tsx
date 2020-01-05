@@ -18,7 +18,7 @@ class Cocktail extends React.Component<Props>{
         return (
             <View style={styles.cocktail}>
                 <Image style={styles.thumb} source={{uri: this.props.data.thumbURL}}/>
-                <Text>{this.props.data.name}</Text>
+                <Text style={styles.title}>{this.props.data.name}</Text>
             </View>
         );
     }
@@ -38,11 +38,24 @@ const styles = StyleSheet.create({
         maxHeight: 50,
         minHeight: 150,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center'
     },
+    column: {
+        flex: 1,
+        alignItems: 'flex-start'
+    },
+    title: {
+        //flex: 1,
+        //paddingRight: 0,
+        fontSize: 20,
+        paddingLeft: 30,
+        paddingRight: 30
+        //minWidth: '30%'
+    },
     thumb: {
-        marginLeft: 0,
+        //flex: 1,
+        marginLeft: 15,
         width: 120,
         height: 120,
         borderRadius:500

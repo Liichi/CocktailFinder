@@ -22,10 +22,8 @@ interface State{
 }
 
 class SearchScreen extends React.Component<Props,State>{
-    constructor(props){
+    constructor(props : Props){
         super(props);
-        //const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(false);
-        //cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
     }
 
     static navigationOptions = {

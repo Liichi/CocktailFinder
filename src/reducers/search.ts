@@ -17,7 +17,7 @@ export const initialState: SearchState = {
 const fetchReducer = (state: SearchState = initialState, action: ActionTypes): SearchState => {
   switch (action.type) {
     case 'CANCEL_FETCH':
-      return { cocktails: state.cocktails, isFetching: false, searchText: state.searchText}
+      return { cocktails: [], isFetching: false, searchText: ''}
     case 'START_FETCH':
       //TODO FETCH & DISPLAY LOAD SPIN
       return { cocktails: state.cocktails, isFetching: true,searchText: action.searchText}

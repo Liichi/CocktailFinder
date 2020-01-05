@@ -11,27 +11,23 @@ export interface StartFetch {
 
 export interface SuccessFetch {
   type: 'SUCCESS_FETCH',
-  cocktails: CocktailData[],
-  searchText: string
+  cocktails: CocktailData[]
 };
 
 export interface ErrorFetch {
-  type: 'ERROR_FETCH',
-  searchText: string
+  type: 'ERROR_FETCH'
 };
 
 export interface CancelFetch {
-  type: 'CANCEL_FETCH',
-  isFetching: boolean
+  type: 'CANCEL_FETCH'
 };
 
 export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch;
 
-export function successFetchAction(searchText: string,newCocktails: CocktailData[]): ActionTypes {
+export function successFetchAction(newCocktails: CocktailData[]): ActionTypes {
   return {
     type: 'SUCCESS_FETCH',
-    cocktails: newCocktails,
-    searchText: searchText
+    cocktails: newCocktails
   }
 }
 
@@ -42,10 +38,20 @@ export function startFetchAction(searchText: string): ActionTypes {
   }
 }
 
+export function cancelFetchAction(): ActionTypes {
+  return {
+    type: 'CANCEL_FETCH'
+  }
+}
+
 export const startFetch = (
   searchText: string//, controller: AbortController
 ): ThunkAction<void, RootState, null, Action > => async dispatch => {
   dispatch(startFetchAction(searchText));
+  if(searchText.length < 4){
+    dispatch(successFetchAction([]));
+    return;
+  }
   //let success : boolean = false;
   const response = await fetch(
     'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
@@ -68,6 +74,6 @@ export const startFetch = (
         return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
       });
     }
-    dispatch(successFetchAction(searchText,searchResult));
+    dispatch(successFetchAction(searchResult));
   }
 }

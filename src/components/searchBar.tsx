@@ -1,4 +1,4 @@
-import {TextInput} from 'react-native';
+import {TextInput, ActivityIndicator} from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 import React,{} from 'react';
 import {View,StyleSheet} from 'react-native';
@@ -10,17 +10,19 @@ import {SearchState} from '../reducers/search'
 import { RootState } from '../store/store';
 
 interface State {
-    searchText : string,
+    searchText : string
     //controller : AbortController
 }
 
 interface Props {
     //dispatch: Dispatch<AnyAction>
-    startFetch : Function
+    //searchText : string,
+    startFetch : Function,
+    isFetching : boolean
 }
 
 class SearchBar extends React.Component<Props,State> {
-    constructor(props){
+    constructor(props : Props){
         super(props);
 
         this.state = {
@@ -33,15 +35,18 @@ class SearchBar extends React.Component<Props,State> {
     onChangeText = (text) => {
         this.setState({searchText: text.text});
         //this.state.controller.abort();
-        if(text.text.length > 3)
-            this.props.startFetch(text.text);   
+        //this.props.searchText = text.text;
+        this.props.startFetch(text.text);   
     }
 
     render() {
         return (
             <View style={styles.searchBar}>
                 <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={25} />
-                <TextInput onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'></TextInput>
+                <TextInput value={this.state.searchText} onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'></TextInput>
+                {this.props.isFetching &&
+                    <ActivityIndicator size="large" color="#6b7585"/>
+                }
             </View>
         );
     }
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: RootState, props: Props) => ({
-    //searchString : props.searchString
+    isFetching : state.search.isFetching
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
