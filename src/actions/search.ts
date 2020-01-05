@@ -64,7 +64,6 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
         else dispatch(errorFetchAction());
     }).then(
         (resData) => {
-            console.log('success');
             if(store.getState().search.searchText === searchText){
                 let searchResult : CocktailData[];
                 if(resData === undefined)
