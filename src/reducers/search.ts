@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux'
-import { Action } from '../actions/search'
-
-export interface CocktailData {
-  name: string,
-  thumbURL: string,
-  id: number
-}
+import { ActionTypes } from '../actions/search'
+import {CocktailData} from '../components/cocktail/cocktailData'
 
 export interface State {
   cocktails: CocktailData[],
@@ -17,7 +12,8 @@ export const initialState: State = {
   isFetching: false
 };
 
-const fetchReducer = (state: State = initialState, action: Action): State => {
+const fetchReducer = (state: State = initialState, action: ActionTypes): State => {
+  console.log('fetch Reducer');
   switch (action.type) {
     case 'CANCEL_FETCH':
       console.log('cancel action');
@@ -38,6 +34,7 @@ const fetchReducer = (state: State = initialState, action: Action): State => {
   }
 }
 
-export default combineReducers<State>({
+export default fetchReducer;
+/*export default combineReducers<State>({
   fetchReducer
-})
+})*/

@@ -10,10 +10,10 @@ interface State {
 }
 
 interface Props {
-    navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+
 }
 
-class Header extends React.Component<Props> {
+class Header extends React.Component<Props,State> {
     constructor(props){
         super(props);
 

@@ -3,7 +3,6 @@ import {View,SafeAreaView,Text,StyleSheet,Button,ScrollView} from 'react-native'
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
-
 import Cocktail from '../components/cocktail/cocktail'
 
 interface Props {

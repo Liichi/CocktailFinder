@@ -1,15 +1,24 @@
 import {TextInput} from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
-import React,{useState, useCallback,Component} from 'react';
-import {View,Text,StyleSheet,Button,TouchableOpacity} from 'react-native';
+import React,{} from 'react';
+import {View,StyleSheet} from 'react-native';
+import {startFetch, ActionTypes} from '../actions/search'
+import { bindActionCreators } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { connect } from 'react-redux';
 
 interface State {
     searchText : string
 }
 
-class SearchBar extends React.Component {
-    constructor(){
-        super();
+interface Props {
+    //dispatch: Dispatch<AnyAction>
+    startFetch : Function
+}
+
+class SearchBar extends React.Component<Props,State> {
+    constructor(props){
+        super(props);
 
         this.state = {
             searchText: ''
@@ -18,8 +27,8 @@ class SearchBar extends React.Component {
     }
     
     onChangeText = (text) => {
-        console.log(text.text);
         this.setState({searchText: text.text});
+        this.props.startFetch(text.text);
     }
 
     render() {
@@ -51,4 +60,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SearchBar;
+const mapStateToProps = (state: State, props: Props) => ({
+    //searchString : props.searchString
+});
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
+    startFetch: bindActionCreators(startFetch, dispatch)
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(SearchBar);

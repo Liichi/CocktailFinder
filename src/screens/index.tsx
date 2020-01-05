@@ -16,7 +16,6 @@ class IndexScreen extends React.Component<Props> {
     };
 
     handleSearch = () => {
-        console.log('test');
         this.props.navigation.navigate('Search');
     }
 
