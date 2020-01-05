@@ -8,7 +8,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
 
 interface State {
-    searchText : string
+    searchText : string,
+    //controller : AbortController
 }
 
 interface Props {
@@ -21,14 +22,17 @@ class SearchBar extends React.Component<Props,State> {
         super(props);
 
         this.state = {
-            searchText: ''
+            searchText: '',
+            //controller: new AbortController()
         };
         //const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(false);
     }
     
     onChangeText = (text) => {
         this.setState({searchText: text.text});
-        this.props.startFetch(text.text);
+        //this.state.controller.abort();
+        if(text.text.length > 3)
+            this.props.startFetch(text.text);   
     }
 
     render() {

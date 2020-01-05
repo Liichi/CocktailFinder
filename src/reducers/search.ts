@@ -4,31 +4,31 @@ import {CocktailData} from '../components/cocktail/cocktailData'
 
 export interface State {
   cocktails: CocktailData[],
-  isFetching: boolean
+  isFetching: boolean,
+  searchText
 }
 
 export const initialState: State = {
   cocktails: [],
-  isFetching: false
+  isFetching: false,
+  searchText: ''
 };
 
 const fetchReducer = (state: State = initialState, action: ActionTypes): State => {
-  console.log('fetch Reducer');
   switch (action.type) {
     case 'CANCEL_FETCH':
       console.log('cancel action');
-      return { cocktails: [], isFetching: false }
+      return { cocktails: state.cocktails, isFetching: false, searchText: state.searchText }
     case 'START_FETCH':
       //TODO FETCH & DISPLAY LOAD SPIN
       console.log('search action');
-      return { cocktails: [], isFetching: true }
+      return { cocktails: state.cocktails, isFetching: true,searchText: action.searchText }
     case 'SUCCESS_FETCH':
-      //TODO FETCH
       console.log('success action');
-      return { cocktails: [], isFetching: false }
+      return { cocktails: action.cocktails, isFetching: false,searchText: state.searchText }
     case 'ERROR_FETCH':
       console.log('ERROR');
-      return { cocktails: [], isFetching: false }
+      return { cocktails: state.cocktails, isFetching: false,searchText: state.searchText }
     default:
       return state;
   }

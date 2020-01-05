@@ -1,22 +1,23 @@
-import { ThunkAction, ThunkDispatch } from 'redux-thunk'
-import { AnyAction,Action } from 'redux';
+import { ThunkAction } from 'redux-thunk'
+import { Action } from 'redux';
 import {RootState} from '../store/store'
-import {Dispatch} from 'redux';
-import { State } from '../reducers/search';
+import store from '../store/store';
+import {CocktailData} from '../components/cocktail/cocktailData';
 
 export interface StartFetch {
   type: 'START_FETCH',
-  searchString: string
+  searchText: string
 };
 
 export interface SuccessFetch {
   type: 'SUCCESS_FETCH',
-  searchString: string
+  cocktails: CocktailData[],
+  searchText: string
 };
 
 export interface ErrorFetch {
   type: 'ERROR_FETCH',
-  searchString: string
+  searchText: string
 };
 
 export interface CancelFetch {
@@ -26,32 +27,44 @@ export interface CancelFetch {
 
 export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch;
 
-/*export const isFetching = (isFetching: boolean): CancelFetch => {
-  return { type: 'CANCEL_FETCH', isFetching }
-}*/
-/*
-export const startFetch = (searchString: string): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
-  console.log('dispatching...1'+searchString);
-  dispatch({type: 'START_FETCH',searchString: searchString})
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
-    return new Promise<void>((resolve) => {
-      console.log('dispatching...2');
-      dispatch({type: 'START_FETCH',searchString: searchString})
-    })
-  }
-}*/
-
-export function successFetchFN(searchString: string): ActionTypes {
+export function successFetchFN(searchText: string,newCocktails: CocktailData[]): ActionTypes {
   return {
     type: 'SUCCESS_FETCH',
-    searchString
+    cocktails: newCocktails,
+    searchText: searchText
+  }
+}
+
+export function startFetchFN(searchText: string): ActionTypes {
+  return {
+    type: 'START_FETCH',
+    searchText
   }
 }
 
 export const startFetch = (
-  message: string
+  searchText: string//, controller: AbortController
 ): ThunkAction<void, RootState, null, Action > => async dispatch => {
-  //const asyncResp = await exampleAPI()
-  console.log('startFetching..');
-  dispatch(successFetchFN(message));
+  dispatch(startFetchFN(searchText));
+  const response = await fetch(
+    'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
+  )
+  /*.then(
+    (response) => {response.json();}
+  ).catch(function(err) {
+    console.log('ERROR :(');
+  });*/
+  let resData = await response.json();
+  if(store.getState().search.searchText === searchText){
+    let searchResult : CocktailData[];
+    if(resData != undefined && resData.drinks != undefined){
+      searchResult = resData.drinks.map((cocktail) =>{
+        return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
+      });
+    }
+    for (let cocktail of searchResult) {
+      console.log(cocktail.thumbURL);
+    }
+    dispatch(successFetchFN(searchText,searchResult));
+  }
 }
