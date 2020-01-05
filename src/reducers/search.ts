@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import { ActionTypes } from '../actions/search'
 import {CocktailData} from '../components/cocktail/cocktailData'
 
@@ -19,7 +18,6 @@ const fetchReducer = (state: SearchState = initialState, action: ActionTypes): S
     case 'CANCEL_FETCH':
       return { cocktails: [], isFetching: false, searchText: ''}
     case 'START_FETCH':
-      //TODO FETCH & DISPLAY LOAD SPIN
       return { cocktails: state.cocktails, isFetching: true,searchText: action.searchText}
     case 'SUCCESS_FETCH':
       return { cocktails: action.cocktails, isFetching: false,searchText: state.searchText}
@@ -31,6 +29,3 @@ const fetchReducer = (state: SearchState = initialState, action: ActionTypes): S
 }
 
 export default fetchReducer;
-/*export default combineReducers<State>({
-  fetchReducer
-})*/

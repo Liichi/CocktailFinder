@@ -40,6 +40,15 @@ class SearchBar extends React.Component<Props,State> {
     }
 }
 
+const mapStateToProps = (state: RootState, props: Props) => ({
+    isFetching : state.search.isFetching,
+    searchText : state.search.searchText
+});
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
+    startFetch: bindActionCreators(startFetch, dispatch)
+});
+
 const styles = StyleSheet.create({
     searchBar: {
         flex: 1,
@@ -57,15 +66,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10
     }
-});
-
-const mapStateToProps = (state: RootState, props: Props) => ({
-    isFetching : state.search.isFetching,
-    searchText : state.search.searchText
-});
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
-    startFetch: bindActionCreators(startFetch, dispatch)
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchBar);

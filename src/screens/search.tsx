@@ -1,5 +1,5 @@
-import React,{useState, useCallback,Component} from 'react';
-import {View,SafeAreaView,Text,StyleSheet,Button,ScrollView,FlatList} from 'react-native';
+import React,{} from 'react';
+import {View,SafeAreaView,StyleSheet,FlatList} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,9 +8,7 @@ import { CocktailData } from '../components/cocktail/cocktailData';
 import { ThunkDispatch } from 'redux-thunk';
 import { ActionTypes } from '../actions/search';
 import { connect } from 'react-redux';
-import store, { RootState } from '../store/store';
-import { bindActionCreators } from 'redux';
-import { SearchState } from '../reducers/search';
+import { RootState } from '../store/store';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -32,10 +30,9 @@ class SearchScreen extends React.Component<Props,State>{
     cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
 
     render(){
-        console.log(this.props.data);
         return (
             <View style={styles.searchScreen}>
-                <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']} style={styles.linearGradient} >  
+                <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']}>  
                     <SafeAreaView style={{flex:1}}>
                         <View style={styles.headerView}>
                             <Header navigation={this.props.navigation}/>
@@ -55,6 +52,14 @@ class SearchScreen extends React.Component<Props,State>{
         );
     }
 };
+
+const mapStateToProps = (state: RootState, props: Props) => ({
+    data : state.search.cocktails
+});
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
+
+});
 
 const styles = StyleSheet.create({
     searchScreen: {
@@ -78,15 +83,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         width: '100%'
     }
-});
-
-const mapStateToProps = (state: RootState, props: Props) => ({
-    data : state.search.cocktails
-});
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
-    //startFetch: bindActionCreators(startFetch, dispatch)
-    //getSearchText: bindActionCreators()
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchScreen);

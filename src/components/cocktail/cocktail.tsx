@@ -1,8 +1,5 @@
-import {TextInput} from 'react-native';
-import Icon from "react-native-vector-icons/Ionicons";
-import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
-import React,{useState, useCallback,Component} from 'react';
-import {View,Text,StyleSheet,Button,TouchableOpacity,Image} from 'react-native';
+import React,{} from 'react';
+import {View,Text,StyleSheet,Image} from 'react-native';
 import { CocktailData } from './cocktailData';
 
 interface Props {

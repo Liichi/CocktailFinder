@@ -1,5 +1,5 @@
-import React,{useState, useCallback, Component} from 'react';
-import {View,Text,StyleSheet,Button,TouchableOpacity,SafeAreaView,TextInput} from 'react-native';
+import React,{} from 'react';
+import {View,Text,StyleSheet,TouchableOpacity,SafeAreaView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/FontAwesome5";

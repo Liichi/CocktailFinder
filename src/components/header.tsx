@@ -1,8 +1,7 @@
-import {TextInput} from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
-import React,{useState, useCallback,Component} from 'react';
-import {View,Text,StyleSheet,Button,TouchableOpacity,ActivityIndicator,BackHandler} from 'react-native';
+import React,{} from 'react';
+import {View,Text,StyleSheet,TouchableOpacity,BackHandler} from 'react-native';
 import SearchBar from './searchBar';
 import {RootState} from '../store/store'
 import { ThunkDispatch } from 'redux-thunk';
@@ -50,7 +49,6 @@ class Header extends React.Component<Props,State> {
     }
 
     render() {
-        console.log(this.props.searchText.length);
         return (
             <View style={styles.header}>
                 {(this.props.searchText.length < 4) &&
