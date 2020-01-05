@@ -6,17 +6,14 @@ import {startFetch, ActionTypes} from '../actions/search'
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
-import {SearchState} from '../reducers/search'
 import { RootState } from '../store/store';
 
 interface State {
-    searchText : string
-    //controller : AbortController
+
 }
 
 interface Props {
-    //dispatch: Dispatch<AnyAction>
-    //searchText : string,
+    searchText : string,
     startFetch : Function,
     isFetching : boolean
 }
@@ -24,18 +21,9 @@ interface Props {
 class SearchBar extends React.Component<Props,State> {
     constructor(props : Props){
         super(props);
-
-        this.state = {
-            searchText: '',
-            //controller: new AbortController()
-        };
-        //const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(false);
     }
     
     onChangeText = (text) => {
-        this.setState({searchText: text.text});
-        //this.state.controller.abort();
-        //this.props.searchText = text.text;
         this.props.startFetch(text.text);   
     }
 
@@ -43,7 +31,7 @@ class SearchBar extends React.Component<Props,State> {
         return (
             <View style={styles.searchBar}>
                 <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={25} />
-                <TextInput value={this.state.searchText} onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'></TextInput>
+                <TextInput value={this.props.searchText} onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'/>
                 {this.props.isFetching &&
                     <ActivityIndicator size="large" color="#6b7585"/>
                 }
@@ -72,7 +60,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: RootState, props: Props) => ({
-    isFetching : state.search.isFetching
+    isFetching : state.search.isFetching,
+    searchText : state.search.searchText
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({

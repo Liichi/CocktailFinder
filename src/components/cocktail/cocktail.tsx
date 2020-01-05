@@ -46,15 +46,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     title: {
-        //flex: 1,
-        //paddingRight: 0,
         fontSize: 20,
         paddingLeft: 30,
         paddingRight: 30
-        //minWidth: '30%'
     },
     thumb: {
-        //flex: 1,
         marginLeft: 15,
         width: 120,
         height: 120,
