@@ -57,7 +57,7 @@ class Header extends React.Component<Props,State> {
                     </TouchableOpacity>
                 }
                 <SearchBar/>
-                {(this.props.searchText.length > 3) &&//this.props.isFetching &&
+                {(this.props.searchText.length > 3) &&
                     <TouchableOpacity onPress={this.onCancel}>
                         <Text style={styles.cancelButton} >Cancel</Text>
                     </TouchableOpacity>
