@@ -46,24 +46,27 @@ export const startFetch = (
   searchText: string//, controller: AbortController
 ): ThunkAction<void, RootState, null, Action > => async dispatch => {
   dispatch(startFetchAction(searchText));
+  //let success : boolean = false;
   const response = await fetch(
     'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
-  )
-  /*.then(
-    (response) => {response.json();}
+  )/*.then(
+    (response) => {success=true;}
   ).catch(function(err) {
-    console.log('ERROR :(');
-  });*/
+    success=false;
+  });
+  if(!success)
+    return;*/
   let resData = await response.json();
   if(store.getState().search.searchText === searchText){
     let searchResult : CocktailData[];
-    if(resData != undefined && resData.drinks != undefined){
+    if(resData === undefined)
+      return
+    if(resData.drinks == null){
+      searchResult = [];
+    }else{
       searchResult = resData.drinks.map((cocktail) =>{
         return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
       });
-    }
-    for (let cocktail of searchResult) {
-      console.log(cocktail.thumbURL);
     }
     dispatch(successFetchAction(searchText,searchResult));
   }
