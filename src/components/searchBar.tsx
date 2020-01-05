@@ -1,5 +1,5 @@
 import {TextInput, ActivityIndicator} from 'react-native';
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from 'react-native-vector-icons/Ionicons';
 import React,{} from 'react';
 import {View,StyleSheet} from 'react-native';
 import {startFetch, ActionTypes} from '../actions/search'
@@ -52,9 +52,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props:
 const styles = StyleSheet.create({
     searchBar: {
         flex: 1,
-        width: '100%',
-        marginLeft: 0,
-        justifyContent: 'center',
+        maxWidth: '80%',
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#e8e8e8',
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
         borderColor: '#e8e8e8'
     },
     searchIcon: {
-        marginLeft: 10,
+        marginLeft: 15,
         marginRight: 10
     }
 });

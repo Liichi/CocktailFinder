@@ -1,4 +1,5 @@
 import Icon from "react-native-vector-icons/Ionicons";
+import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import React,{} from 'react';
 import {View,Text,StyleSheet,TouchableOpacity,BackHandler} from 'react-native';
@@ -53,13 +54,13 @@ class Header extends React.Component<Props,State> {
             <View style={styles.header}>
                 {(this.props.searchText.length < 3) &&
                     <TouchableOpacity onPress={this.onBack}>
-                        <Icon style={styles.backButton} name="md-arrow-back" color="#000" size={25} />
+                        <Icon name="md-arrow-back" color="#000" size={25} />
                     </TouchableOpacity>
                 }
                 <SearchBar/>
                 {(this.props.searchText.length > 2) &&
                     <TouchableOpacity onPress={this.onCancel}>
-                        <Text style={styles.cancelButton} >Cancel</Text>
+                        <Icon2 name="cancel" color="#F00" size={25} />
                     </TouchableOpacity>
                 }
             </View>
@@ -80,23 +81,12 @@ const styles = StyleSheet.create({
     header: {
         flex:1,
         marginTop: 30,
-        minWidth: '90%',
-        marginLeft: 15,
-        marginRight: 15,
+        minWidth: '100%',
         height: 10,
         maxHeight: 40,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center'
-    },
-    cancelButton: {
-        color: 'red',
-        marginLeft: 15,
-        fontSize: 17
-    },
-    backButton: {
-        marginLeft: 0,
-        marginRight: 10
     }
 });
 

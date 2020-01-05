@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     cocktail: {
         flex:1,
         marginTop: 30,
-        minWidth: '90%',
+        minWidth: '70%',
+        //maxWidth: '90%',
         marginLeft: 15,
         marginRight: 15,
         height: 50,
