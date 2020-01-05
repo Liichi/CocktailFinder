@@ -28,7 +28,6 @@ class SearchScreen extends React.Component<Props,State>{
     static navigationOptions = {
         headerShown: false
     };
-    cdata : CocktailData = {id: 5, name: 'test', thumbURL: 'test'}
 
     render(){
         return (

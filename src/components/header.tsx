@@ -51,13 +51,13 @@ class Header extends React.Component<Props,State> {
     render() {
         return (
             <View style={styles.header}>
-                {(this.props.searchText.length < 4) &&
+                {(this.props.searchText.length < 3) &&
                     <TouchableOpacity onPress={this.onBack}>
                         <Icon style={styles.backButton} name="md-arrow-back" color="#000" size={25} />
                     </TouchableOpacity>
                 }
                 <SearchBar/>
-                {(this.props.searchText.length > 3) &&
+                {(this.props.searchText.length > 2) &&
                     <TouchableOpacity onPress={this.onCancel}>
                         <Text style={styles.cancelButton} >Cancel</Text>
                     </TouchableOpacity>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     },
     cancelButton: {
         color: 'red',
-        marginLeft: 5,
+        marginLeft: 15,
         fontSize: 17
     },
     backButton: {

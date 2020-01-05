@@ -52,7 +52,7 @@ export function errorFetchAction(): ActionTypes {
 
 export const startFetch = (searchText: string): ThunkAction<void, RootState, null, Action > => async dispatch => {
     dispatch(startFetchAction(searchText));
-    if(searchText.length < 4){
+    if(searchText.length < 3){
         dispatch(successFetchAction([]));
         return;
     }
