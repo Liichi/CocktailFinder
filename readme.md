@@ -1,6 +1,5 @@
 # CocktailFinder
 ##### React Native challenge
----
 ### Install
 Open terminal and run:
 ```sh
