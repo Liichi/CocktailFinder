@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,Text,StyleSheet,Image} from 'react-native';
+import {View,Text,StyleSheet,Image, Dimensions} from 'react-native';
 import { CocktailData } from './cocktailData';
 
 interface Props {
@@ -24,17 +24,18 @@ class Cocktail extends React.Component<Props>{
 const styles = StyleSheet.create({
     cocktail: {
         flex:1,
-        marginTop: 30,
-        minWidth: '70%',
-        //maxWidth: '90%',
+        marginTop: 10,
+        marginBottom: 10,
+        minWidth: '90%',
+        maxWidth: '90%',
         marginLeft: 15,
         marginRight: 15,
-        height: 50,
+        height: '30%',
         borderRadius:8,
         backgroundColor: 'white',
         margin: 90,
-        maxHeight: 50,
-        minHeight: 150,
+        maxHeight: Dimensions.get('window').height / 4.5,
+        minHeight: Dimensions.get('window').height / 4.5,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center'
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         paddingLeft: 30,
-        paddingRight: 30
+        paddingRight: 30,
+        maxWidth: '60%'
     },
     thumb: {
         marginLeft: 15,

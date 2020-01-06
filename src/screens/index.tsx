@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     searchBar: {
         flex: 1,
         width: '90%',
-        maxHeight: 50,
+        maxHeight: '28%',
         marginLeft: 0,
         justifyContent: 'center',
         alignItems: 'center',
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     cocktailIcon: {
+        marginTop: 30,
         marginBottom: 10
     }
 });

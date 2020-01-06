@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,SafeAreaView,StyleSheet,FlatList,Text} from 'react-native';
+import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -80,14 +80,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        maxHeight: 80
+        maxHeight: Dimensions.get('window').height / 7.5,
+        minHeight: Dimensions.get('window').height / 7.5
     },
     error:{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'red',
-        maxHeight: 40
+        maxHeight : Dimensions.get('window').height / 15
     },
     errorText:{
         fontSize: 15,

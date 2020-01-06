@@ -2,7 +2,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import React,{} from 'react';
-import {View,StyleSheet,TouchableOpacity,BackHandler} from 'react-native';
+import {View,StyleSheet,TouchableOpacity,BackHandler, Dimensions} from 'react-native';
 import SearchBar from './searchBar';
 import {RootState} from '../store/store'
 import { ThunkDispatch } from 'redux-thunk';
@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
         flex:1,
         marginTop: 30,
         minWidth: '100%',
-        height: 10,
-        maxHeight: 40,
+        minHeight: Dimensions.get('window').height / 15,
+        maxHeight: Dimensions.get('window').height / 15,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center'
