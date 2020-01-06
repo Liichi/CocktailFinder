@@ -9,6 +9,11 @@ export interface StartFetch {
     searchText: string
 };
 
+export interface ChangeSearchText {
+    type: 'CHANGE_SEARCH_TEXT',
+    searchText: string
+};
+
 export interface SuccessFetch {
     type: 'SUCCESS_FETCH',
     cocktails: CocktailData[]
@@ -22,7 +27,7 @@ export interface CancelFetch {
     type: 'CANCEL_FETCH'
 };
 
-export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch;
+export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch | ChangeSearchText;
 
 export function successFetchAction(newCocktails: CocktailData[]): ActionTypes {
     return {
@@ -50,7 +55,18 @@ export function errorFetchAction(): ActionTypes {
     }
 }
 
+export function changeSearchTextAction(searchText : string): ActionTypes {
+    return {
+        type: 'CHANGE_SEARCH_TEXT',
+        searchText
+    }
+}
+
 export const startFetch = (searchText: string): ThunkAction<void, RootState, null, Action > => async dispatch => {
+    if(store.getState().search.isFetching){
+        dispatch(changeSearchTextAction(searchText));
+        return;
+    }
     dispatch(startFetchAction(searchText));
     if(searchText.length < 3){
         dispatch(successFetchAction([]));
@@ -64,19 +80,17 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
         else dispatch(errorFetchAction());
     }).then(
         (resData) => {
-            if(store.getState().search.searchText === searchText){
-                let searchResult : CocktailData[];
-                if(resData === undefined)
-                    return
-                if(resData.drinks == null){
-                    searchResult = [];
-                }else{
-                    searchResult = resData.drinks.map((cocktail) =>{
-                        return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
-                    });
-                }
-                dispatch(successFetchAction(searchResult));
+            let searchResult : CocktailData[];
+            if(resData === undefined)
+                return
+            if(resData.drinks == null){
+                searchResult = [];
+            }else{
+                searchResult = resData.drinks.map((cocktail) =>{
+                    return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
+                });
             }
+            dispatch(successFetchAction(searchResult));
         }
     ).catch(err => {
         dispatch(errorFetchAction());

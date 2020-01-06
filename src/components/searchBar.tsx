@@ -9,22 +9,46 @@ import { connect } from 'react-redux';
 import { RootState } from '../store/store';
 
 interface State {
-
+    timer : any,
+    searchText : string
 }
 
 interface Props {
     searchText : string,
     startFetch : Function,
-    isFetching : boolean
+    isFetching : boolean,
 }
 
 class SearchBar extends React.Component<Props,State> {
     constructor(props : Props){
         super(props);
+
+        this.state = {
+            searchText : '',
+            timer : null
+        };
     }
     
     onChangeText = (text) => {
-        this.props.startFetch(text.text);   
+        this.props.startFetch(text.text);  
+        this.setState({searchText : text.text});
+    }
+
+    componentDidMount() {
+        let tmpTimer = setInterval(this.checkForDataUpdate, 1000);
+        this.setState({timer: tmpTimer});
+    }
+    
+    componentWillUnmount() {
+        clearInterval(this.state.timer);
+    }
+
+    checkForDataUpdate =() => {
+        if(!this.props.isFetching){
+            if(this.props.searchText != this.state.searchText){
+                this.props.startFetch(this.state.searchText); 
+            }
+        }
     }
 
     render() {

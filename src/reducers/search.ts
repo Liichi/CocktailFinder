@@ -19,6 +19,8 @@ const fetchReducer = (state: SearchState = initialState, action: ActionTypes): S
     switch (action.type) {
         case 'CANCEL_FETCH':
             return { cocktails: [], isFetching: false, searchText: '', error: false}
+        case 'CHANGE_SEARCH_TEXT':
+            return { cocktails: state.cocktails, isFetching: state.isFetching, searchText: action.searchText, error: false}
         case 'START_FETCH':
             return { cocktails: state.cocktails, isFetching: true,searchText: action.searchText, error: state.error}
         case 'SUCCESS_FETCH':
