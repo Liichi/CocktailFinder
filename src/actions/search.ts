@@ -19,15 +19,15 @@ export interface SuccessFetch {
     cocktails: CocktailData[]
 };
 
-export interface ErrorFetch {
-    type: 'ERROR_FETCH'
+export interface FetchError {
+    type: 'FETCH_ERROR'
 };
 
 export interface CancelFetch {
     type: 'CANCEL_FETCH'
 };
 
-export type ActionTypes = StartFetch | CancelFetch | ErrorFetch | SuccessFetch | ChangeSearchText;
+export type ActionTypes = StartFetch | CancelFetch | FetchError | SuccessFetch | ChangeSearchText;
 
 export function successFetchAction(newCocktails: CocktailData[]): ActionTypes {
     return {
@@ -49,9 +49,9 @@ export function cancelFetchAction(): ActionTypes {
     }
 }
 
-export function errorFetchAction(): ActionTypes {
+export function fetchErrorAction(): ActionTypes {
     return {
-        type: 'ERROR_FETCH'
+        type: 'FETCH_ERROR'
     }
 }
 
@@ -77,7 +77,7 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
     ).then((resp) => {
         if(resp.ok)
             return resp.json();
-        else dispatch(errorFetchAction());
+        else dispatch(fetchErrorAction());
     }).then(
         (resData) => {
             let searchResult : CocktailData[];
@@ -93,6 +93,6 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
             dispatch(successFetchAction(searchResult));
         }
     ).catch(err => {
-        dispatch(errorFetchAction());
+        dispatch(fetchErrorAction());
     });
 }
