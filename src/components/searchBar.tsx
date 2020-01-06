@@ -1,6 +1,6 @@
 import {TextInput, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import React,{} from 'react';
+import React,{useEffect} from 'react';
 import {View,StyleSheet} from 'react-native';
 import {startFetch, ActionTypes} from '../actions/search'
 import { bindActionCreators } from 'redux';
@@ -17,6 +17,7 @@ interface Props {
     searchText : string,
     startFetch : Function,
     isFetching : boolean,
+    needUpdate : boolean
 }
 
 class SearchBar extends React.Component<Props,State> {
@@ -35,7 +36,7 @@ class SearchBar extends React.Component<Props,State> {
     }
 
     componentDidMount() {
-        let tmpTimer = setInterval(this.checkForDataUpdate, 1000);
+        let tmpTimer = setInterval(this.checkForDataUpdate, 500);
         this.setState({timer: tmpTimer});
     }
     
@@ -43,12 +44,10 @@ class SearchBar extends React.Component<Props,State> {
         clearInterval(this.state.timer);
     }
 
+    //start new fetch if data is old
     checkForDataUpdate =() => {
-        if(!this.props.isFetching){
-            if(this.props.searchText != this.state.searchText){
-                this.props.startFetch(this.state.searchText); 
-            }
-        }
+        if(!this.props.isFetching && this.props.needUpdate)
+            this.props.startFetch(this.state.searchText);
     }
 
     render() {
@@ -66,7 +65,8 @@ class SearchBar extends React.Component<Props,State> {
 
 const mapStateToProps = (state: RootState, props: Props) => ({
     isFetching : state.search.isFetching,
-    searchText : state.search.searchText
+    searchText : state.search.searchText,
+    needUpdate : state.search.needUpdate
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({

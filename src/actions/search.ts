@@ -3,6 +3,7 @@ import { Action } from 'redux';
 import {RootState} from '../store/store'
 import store from '../store/store';
 import {CocktailData} from '../components/cocktail/cocktailData';
+import { State } from 'react-native-gesture-handler';
 
 export interface StartFetch {
     type: 'START_FETCH',
@@ -16,7 +17,8 @@ export interface ChangeSearchText {
 
 export interface SuccessFetch {
     type: 'SUCCESS_FETCH',
-    cocktails: CocktailData[]
+    cocktails: CocktailData[],
+    searchText : string
 };
 
 export interface FetchError {
@@ -29,10 +31,11 @@ export interface CancelFetch {
 
 export type ActionTypes = StartFetch | CancelFetch | FetchError | SuccessFetch | ChangeSearchText;
 
-export function successFetchAction(newCocktails: CocktailData[]): ActionTypes {
+export function successFetchAction(searchText:string, newCocktails: CocktailData[]): ActionTypes {
     return {
         type: 'SUCCESS_FETCH',
-        cocktails: newCocktails
+        cocktails: newCocktails,
+        searchText: searchText
     }
 }
 
@@ -63,15 +66,20 @@ export function changeSearchTextAction(searchText : string): ActionTypes {
 }
 
 export const startFetch = (searchText: string): ThunkAction<void, RootState, null, Action > => async dispatch => {
+    //if already fetching just change searchText and wait current fetch
     if(store.getState().search.isFetching){
         dispatch(changeSearchTextAction(searchText));
         return;
     }
+
     dispatch(startFetchAction(searchText));
+
+    //if length < 3 clear results
     if(searchText.length < 3){
-        dispatch(successFetchAction([]));
+        dispatch(successFetchAction(searchText,[]));
         return;
     }
+
     await fetch(
         'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
     ).then((resp) => {
@@ -90,7 +98,8 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
                     return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
                 });
             }
-            dispatch(successFetchAction(searchResult));
+            //update redux data
+            dispatch(successFetchAction(searchText,searchResult));
         }
     ).catch(err => {
         dispatch(fetchErrorAction());
