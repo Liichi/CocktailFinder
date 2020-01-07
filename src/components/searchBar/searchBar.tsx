@@ -32,7 +32,7 @@ class SearchBar extends React.Component<Props,State> {
     }
     
     onChangeText = (text) => {
-        this.props.startFetch(text.text);  
+        this.props.startFetch(text.text,this.props.isFetching);  
         this.setState({searchText : text.text});
     }
 
@@ -48,7 +48,7 @@ class SearchBar extends React.Component<Props,State> {
     //start new fetch if data is old
     checkForDataUpdate =() => {
         if(!this.props.isFetching && this.props.needUpdate)
-            this.props.startFetch(this.state.searchText);
+            this.props.startFetch(this.state.searchText,this.props.isFetching);
     }
 
     render() {

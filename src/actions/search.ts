@@ -65,9 +65,9 @@ export function changeSearchTextAction(searchText : string): ActionTypes {
     }
 }
 
-export const startFetch = (searchText: string): ThunkAction<void, RootState, null, Action > => async dispatch => {
+export const startFetch = (searchText: string, isFetching:boolean): ThunkAction<void, RootState, null, Action > => async dispatch => {
     //if already fetching just change searchText and wait current fetch
-    if(store.getState().search.isFetching){
+    if(isFetching){
         dispatch(changeSearchTextAction(searchText));
         return;
     }

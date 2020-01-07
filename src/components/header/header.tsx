@@ -25,11 +25,11 @@ class Header extends React.Component<Props> {
     }
 
     onCancel = () => {
-        this.props.startFetch('');  
+        this.props.startFetch('',this.props.isFetching);  
     }
 
     onBack = () => {
-        this.props.startFetch('');
+        this.props.startFetch('',this.props.isFetching);
         this.props.navigation.goBack();
     }
 
