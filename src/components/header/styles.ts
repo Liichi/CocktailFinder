@@ -1,12 +1,13 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {rs} from '../../styled';
 
 const styles = StyleSheet.create({
     header: {
         flex:1,
         marginTop: 30,
         minWidth: '100%',
-        minHeight: Dimensions.get('window').height / 15,
-        maxHeight: Dimensions.get('window').height / 15,
+        minHeight: rs(45),
+        maxHeight: rs(45),
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center'

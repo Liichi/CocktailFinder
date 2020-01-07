@@ -1,4 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {rs} from '../../styled';
 
 const styles = StyleSheet.create({
     searchScreen: {
@@ -12,15 +13,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        maxHeight: Dimensions.get('window').height / 7.5,
-        minHeight: Dimensions.get('window').height / 7.5
+        maxHeight: rs(90),
+        minHeight: rs(90)
     },
     error:{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'red',
-        maxHeight : Dimensions.get('window').height / 15
+        maxHeight : rs(40)
     },
     errorText:{
         fontSize: 15,

@@ -1,4 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {rs} from '../../styled';
 
 const styles = StyleSheet.create({
     cocktail: {
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
         borderRadius:8,
         backgroundColor: 'white',
         margin: 90,
-        maxHeight: Dimensions.get('window').height / 4.5,
-        minHeight: Dimensions.get('window').height / 4.5,
+        maxHeight: rs(150),
+        minHeight: rs(150),
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -24,18 +25,18 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     title: {
-        fontSize: Dimensions.get('window').width * 0.06,
+        fontSize: rs(26),
         marginRight: 10,
         marginLeft: 15,
-        maxWidth: Dimensions.get('window').width * 0.4,
+        maxWidth: rs(140),
         alignItems: 'center',
         justifyContent: 'center'
     },
     thumb: {
         marginLeft: 15,
         marginRight: 10,
-        width: Dimensions.get('window').height / 5.5,
-        height: Dimensions.get('window').height / 5.5,
+        width: rs(130),
+        height: rs(130),
         borderRadius:1000
     }
 });

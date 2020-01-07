@@ -1,4 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {rs} from '../../styled';
 
 const styles = StyleSheet.create({
     index: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontSize: Dimensions.get('window').width * 0.085,
+        fontSize: rs(30),
         fontWeight: '100',
         marginBottom: 15
     },
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     searchText: {
         flex: 1,
         width: '100%',
-        fontSize: Dimensions.get('window').width * 0.04,
+        fontSize: rs(15),
         marginLeft: 0
     },
     searchIcon: {
