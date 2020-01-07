@@ -3,7 +3,6 @@ import { Action } from 'redux';
 import {RootState} from '../store/store'
 import store from '../store/store';
 import {CocktailData} from '../components/cocktail/cocktailData';
-import { State } from 'react-native-gesture-handler';
 import Config from '../../config'
 
 export interface StartFetch {
