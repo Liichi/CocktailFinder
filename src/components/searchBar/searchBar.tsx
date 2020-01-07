@@ -1,4 +1,4 @@
-import {TextInput, ActivityIndicator, Dimensions} from 'react-native';
+import {TextInput, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React,{} from 'react';
 import {View} from 'react-native';
@@ -8,6 +8,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { RootState } from '../../store/store';
 import styles from './styles';
+import {rs} from '../../styled';
 
 interface State {
     timer : any,
@@ -54,7 +55,7 @@ class SearchBar extends React.Component<Props,State> {
     render() {
         return (
             <View style={styles.searchBar}>
-                <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={Dimensions.get('window').height / 25} />
+                <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={rs(28)} />
                 <TextInput value={this.props.searchText} onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'/>
                 {this.props.isFetching &&
                     <ActivityIndicator size="large" color="#6b7585"/>

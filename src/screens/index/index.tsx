@@ -1,11 +1,11 @@
 import React,{} from 'react';
-import {View,Text,StyleSheet,TouchableOpacity,SafeAreaView, Dimensions} from 'react-native';
+import {View,Text,TouchableOpacity,SafeAreaView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
-import {rs,nlz} from '../../styled';
+import {rs} from '../../styled';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;

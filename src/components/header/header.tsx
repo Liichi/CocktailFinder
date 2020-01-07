@@ -2,7 +2,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import React,{} from 'react';
-import {View,TouchableOpacity,BackHandler, Dimensions} from 'react-native';
+import {View,TouchableOpacity,BackHandler} from 'react-native';
 import SearchBar from '../searchBar';
 import {RootState} from '../../store/store'
 import { ThunkDispatch } from 'redux-thunk';
@@ -10,6 +10,7 @@ import { ActionTypes, startFetch } from '../../actions/search';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './styles';
+import {rs} from '../../styled';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>,
@@ -51,13 +52,13 @@ class Header extends React.Component<Props> {
             <View style={styles.header}>
                 {(this.props.searchText.length < 3) &&
                     <TouchableOpacity onPress={this.onBack}>
-                        <Icon name="md-arrow-back" color="#000" size={Dimensions.get('window').height / 25} />
+                        <Icon name="md-arrow-back" color="#000" size={rs(25)} />
                     </TouchableOpacity>
                 }
                 <SearchBar style={styles.searchBar}/>
                 {(this.props.searchText.length > 2) &&
                     <TouchableOpacity onPress={this.onCancel}>
-                        <Icon2 name="cancel" color="#F00" size={Dimensions.get('window').height / 25} />
+                        <Icon2 name="cancel" color="#F00" size={rs(30)} />
                     </TouchableOpacity>
                 }
             </View>
