@@ -2,11 +2,6 @@
 ##### React Native Challenge
 ### Install
 Open terminal and run:
-#### Linux
-```sh
-npm install
-```
-#### Mac
 ```sh
 yarn install
 cd ios && pod install
