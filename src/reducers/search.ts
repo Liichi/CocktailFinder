@@ -20,18 +20,18 @@ export const initialState: SearchState = {
 const fetchReducer = (state: SearchState = initialState, action: ActionTypes): SearchState => {
     switch (action.type) {
         case 'CANCEL_FETCH':
-            return { cocktails: [], isFetching: false, searchText: '', error: false, needUpdate:state.needUpdate}
+            return { ...state , cocktails: [], isFetching: false, searchText: '', error: false}
         case 'CHANGE_SEARCH_TEXT':
-            return { cocktails: state.cocktails, isFetching: state.isFetching, searchText: action.searchText, error: false, needUpdate:state.needUpdate}
+            return { ...state, searchText: action.searchText, error: false}
         case 'START_FETCH':
-            return { cocktails: state.cocktails, isFetching: true,searchText: action.searchText, error: state.error, needUpdate:state.needUpdate}
+            return { ...state, isFetching: true,searchText: action.searchText}
         case 'SUCCESS_FETCH':
             //if searchText has changed need to update
             if(action.searchText === state.searchText)
-                return { cocktails: action.cocktails, isFetching: false,searchText: state.searchText, error: false, needUpdate :false}
-            else return { cocktails: action.cocktails, isFetching: false,searchText: state.searchText, error: false, needUpdate : true}
+                return { ...state, cocktails: action.cocktails, isFetching: false, error: false, needUpdate :false}
+            else return { ...state, cocktails: action.cocktails, isFetching: false, error: false, needUpdate : true}
         case 'FETCH_ERROR':
-            return { cocktails: state.cocktails, isFetching: false,searchText: state.searchText, error: true, needUpdate:state.needUpdate}
+            return { ...state, isFetching: false, error: true}
         default:
             return state;
     }
