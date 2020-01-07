@@ -8,10 +8,6 @@ interface Props {
 }
 
 class Cocktail extends React.Component<Props>{
-    constructor(props){
-        super(props);
-    }
-
     render() {
         return (
             <View style={styles.cocktail}>
