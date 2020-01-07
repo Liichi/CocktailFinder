@@ -4,6 +4,7 @@ import {RootState} from '../store/store'
 import store from '../store/store';
 import {CocktailData} from '../components/cocktail/cocktailData';
 import { State } from 'react-native-gesture-handler';
+import SERVER_URL from '../../config'
 
 export interface StartFetch {
     type: 'START_FETCH',
@@ -81,7 +82,7 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
     }
 
     await fetch(
-        'https://thecocktaildb.com/api/json/v1/1/search.php?s='+searchText, {}
+        SERVER_URL+searchText, {}
     ).then((resp) => {
         if(resp.ok)
             return resp.json();

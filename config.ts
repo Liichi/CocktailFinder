@@ -1,0 +1,1 @@
+export const SERVER_URL : string = 'https://thecocktaildb.com/api/json/v1/1/search.php?s=';
