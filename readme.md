@@ -14,7 +14,7 @@ cd ios && pod install
 * [react-native-vector-icons]
 * [redux]
 * [react-native-linear-gradient]
-### Posible optimizations
+### Possible optimizations
 #### Implementation
 * Implement pagination (require server side changes).
 * Abort fetch instead of just ignore.
