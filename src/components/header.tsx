@@ -10,10 +10,6 @@ import { ActionTypes, startFetch } from '../actions/search';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-interface State {
-    
-}
-
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>,
     isFetching : boolean,
@@ -21,7 +17,7 @@ interface Props {
     startFetch : Function
 }
 
-class Header extends React.Component<Props,State> {
+class Header extends React.Component<Props> {
     constructor(props : Props){
         super(props);
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);

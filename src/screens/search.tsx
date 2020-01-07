@@ -16,11 +16,7 @@ interface Props {
     error : boolean
 }
 
-interface State{
-    
-}
-
-class SearchScreen extends React.Component<Props,State>{
+class SearchScreen extends React.Component<Props>{
     constructor(props : Props){
         super(props);
     }
