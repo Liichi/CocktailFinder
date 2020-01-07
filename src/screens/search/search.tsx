@@ -27,6 +27,7 @@ class SearchScreen extends React.Component<Props>{
     };
 
     render(){
+        const data : CocktailData[] = this.props.data;
         return (
             <View style={styles.searchScreen}>
                 <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']}>  
@@ -41,7 +42,7 @@ class SearchScreen extends React.Component<Props>{
                         }
                         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : null} style={styles.body}>
                             <FlatList
-                                data={this.props.data}
+                                data={data}
                                 keyExtractor={(item, index) => item.id.toString()}
                                 renderItem={(item) => (
                                     <Cocktail data={item.item}></Cocktail>
