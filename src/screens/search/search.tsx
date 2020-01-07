@@ -43,7 +43,6 @@ class SearchScreen extends React.Component<Props>{
                         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : null} style={styles.body}>
                             <FlatList
                                 data={data}
-                                keyExtractor={(item, index) => item.id.toString()}
                                 renderItem={(item) => (
                                     <Cocktail data={item.item}></Cocktail>
                                 )}
