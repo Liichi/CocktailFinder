@@ -46,7 +46,7 @@ class SearchScreen extends React.Component<Props,State>{
                         <View style={styles.body}>
                             <FlatList
                                 data={this.props.data}
-                                //keyExtractor={(item, index) => item.id}
+                                keyExtractor={(item, index) => item.id.toString()}
                                 renderItem={(item) => (
                                     <Cocktail data={item.item}></Cocktail>
                                 )}
