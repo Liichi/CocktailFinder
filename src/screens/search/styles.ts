@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'transparent',
         width: '100%'
+    },
+    screen:{
+        flex: 1
     }
 });
 

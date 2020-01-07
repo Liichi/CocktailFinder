@@ -31,7 +31,7 @@ class SearchScreen extends React.Component<Props>{
         return (
             <View style={styles.searchScreen}>
                 <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']}>  
-                    <SafeAreaView style={{flex:1}}>
+                    <SafeAreaView style={styles.screen}>
                         <View style={styles.headerView}>
                             <Header navigation={this.props.navigation}/>
                         </View>
