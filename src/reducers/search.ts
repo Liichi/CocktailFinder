@@ -27,9 +27,7 @@ const fetchReducer = (state: SearchState = initialState, action: ActionTypes): S
             return { ...state, isFetching: true,searchText: action.searchText}
         case 'SUCCESS_FETCH':
             //if searchText has changed need to update
-            if(action.searchText === state.searchText)
-                return { ...state, cocktails: action.cocktails, isFetching: false, error: false, needUpdate :false}
-            else return { ...state, cocktails: action.cocktails, isFetching: false, error: false, needUpdate : true}
+            return { ...state, cocktails: action.cocktails, isFetching: false, error: false, needUpdate : action.searchText != state.searchText}
         case 'FETCH_ERROR':
             return { ...state, isFetching: false, error: true}
         default:
