@@ -80,7 +80,7 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
         return;
     }
     await fetch(
-        Config.API_URL+searchText, {}
+        Config.API_URL+searchText
     ).then((resp) => {
         if(resp.ok)
             return resp.json();
