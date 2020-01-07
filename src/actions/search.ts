@@ -79,28 +79,24 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
         dispatch(successFetchAction(searchText,[]));
         return;
     }
-    await fetch(
-        Config.API_URL+searchText
-    ).then((resp) => {
-        if(resp.ok)
-            return resp.json();
-        else dispatch(fetchErrorAction());
-    }).then(
-        (resData) => {
-            let searchResult : CocktailData[];
-            if(resData === undefined)
-                return
-            if(resData.drinks == null){
-                searchResult = [];
-            }else{
-                searchResult = resData.drinks.map((cocktail) =>{
-                    return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
-                });
-            }
-            //update redux data
-            dispatch(successFetchAction(searchText,searchResult));
+    try{
+        const response = await fetch(Config.API_URL+searchText);
+        if(!response.ok)
+            return dispatch(fetchErrorAction());
+        const resData : any = await response.json();
+        let searchResult : CocktailData[];
+        if(resData === undefined)
+            return
+        if(resData.drinks == null){
+            searchResult = [];
+        }else{
+            searchResult = resData.drinks.map((cocktail) =>{
+                return {thumbURL: cocktail.strDrinkThumb,name: cocktail.strDrink,id: cocktail.idDrink}
+            });
         }
-    ).catch(err => {
+        //update redux data
+        dispatch(successFetchAction(searchText,searchResult));
+    }catch(error){
         dispatch(fetchErrorAction());
-    });
+    }
 }
