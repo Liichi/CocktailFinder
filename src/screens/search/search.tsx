@@ -3,12 +3,13 @@ import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions, Platform, Keyboa
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../../components/header';
 import LinearGradient from 'react-native-linear-gradient';
-import Cocktail from '../components/cocktail/cocktail'
-import { CocktailData } from '../components/cocktail/cocktailData';
+import Cocktail from '../../components/cocktail/cocktail'
+import { CocktailData } from '../../components/cocktail/cocktailData';
 import { ThunkDispatch } from 'redux-thunk';
-import { ActionTypes } from '../actions/search';
+import { ActionTypes } from '../../actions/search';
 import { connect } from 'react-redux';
-import { RootState } from '../store/store';
+import { RootState } from '../../store/store';
+import styles from './styles';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -61,41 +62,6 @@ const mapStateToProps = (state: RootState, props: Props) => ({
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
 
-});
-
-const styles = StyleSheet.create({
-    searchScreen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white'
-    },
-    headerView: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        maxHeight: Dimensions.get('window').height / 7.5,
-        minHeight: Dimensions.get('window').height / 7.5
-    },
-    error:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'red',
-        maxHeight : Dimensions.get('window').height / 15
-    },
-    errorText:{
-        fontSize: 15,
-        color: 'white'
-    },
-    body:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        width: '100%'
-    }
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchScreen);
