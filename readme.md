@@ -21,13 +21,13 @@ cd ios && pod install
 * Caching search results.
 * Caching images.
 #### Flatlist Props
-*windowSize
+* windowSize
 lower value => render less outside-screen elements.
-*removeClippedSubviews
+* removeClippedSubviews
 true => don't render outside-screen elements.
-*initialNumToRender
+* initialNumToRender
 lower value => improve initial render perfomance.
-*maxRenderPerBatch
+* maxRenderPerBatch
 lower value => render less elements on each scroll, better perfomance.
-*updateCellsBatchingPeriod
+* updateCellsBatchingPeriod
 lowerValue => better perfomance, but lower update rate.
