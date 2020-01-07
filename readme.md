@@ -15,7 +15,19 @@ cd ios && pod install
 * [redux]
 * [react-native-linear-gradient]
 ### Posible optimizations
+#### Implementation
 * Implement pagination (require server side changes).
 * Abort fetch instead of just ignore.
 * Caching search results.
 * Caching images.
+#### Flatlist Props
+*windowSize
+lower value => render less outside-screen elements.
+*removeClippedSubviews
+true => don't render outside-screen elements.
+*initialNumToRender
+lower value => improve initial render perfomance.
+*maxRenderPerBatch
+lower value => render less elements on each scroll, better perfomance.
+*updateCellsBatchingPeriod
+lowerValue => better perfomance, but lower update rate.
