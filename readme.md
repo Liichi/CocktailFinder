@@ -2,13 +2,9 @@
 ##### React Native Challenge
 ### Install
 Open terminal and run:
-```sh
-npm install
-```
-### Run
 #### Linux
 ```sh
-npm start
+npm install
 ```
 #### Max
 ```sh
