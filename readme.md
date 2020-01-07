@@ -6,7 +6,7 @@ Open terminal and run:
 ```sh
 npm install
 ```
-#### Max
+#### Mac
 ```sh
 yarn install
 cd ios && pod install
