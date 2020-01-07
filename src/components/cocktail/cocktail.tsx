@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,Text,StyleSheet,Image, Dimensions} from 'react-native';
+import {View,Text,Image} from 'react-native';
 import { CocktailData } from './cocktailData';
 import styles from './styles';
 

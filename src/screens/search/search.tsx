@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions, Platform, KeyboardAvoidingView} from 'react-native';
+import {View,SafeAreaView,FlatList,Text, Platform, KeyboardAvoidingView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../../components/header';
 import LinearGradient from 'react-native-linear-gradient';

@@ -2,7 +2,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import React,{} from 'react';
-import {View,StyleSheet,TouchableOpacity,BackHandler, Dimensions} from 'react-native';
+import {View,TouchableOpacity,BackHandler, Dimensions} from 'react-native';
 import SearchBar from '../searchBar';
 import {RootState} from '../../store/store'
 import { ThunkDispatch } from 'redux-thunk';

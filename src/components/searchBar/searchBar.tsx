@@ -1,7 +1,7 @@
 import {TextInput, ActivityIndicator, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import React,{useEffect} from 'react';
-import {View,StyleSheet} from 'react-native';
+import React,{} from 'react';
+import {View} from 'react-native';
 import {startFetch, ActionTypes} from '../../actions/search'
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
