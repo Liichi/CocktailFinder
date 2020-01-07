@@ -9,13 +9,14 @@ interface Props {
 
 class Cocktail extends React.Component<Props>{
     render() {
+        const {name,thumbURL,id} = this.props.data;
         return (
             <View style={styles.cocktail}>
                 <View style={styles.column}>
-                    <Image style={styles.thumb} source={{uri: this.props.data.thumbURL}}/>
+                    <Image style={styles.thumb} source={{uri: thumbURL}}/>
                 </View>
                 <View style={styles.column}>
-                    <Text style={styles.title}>{this.props.data.name}</Text>
+                    <Text style={styles.title}>{name}</Text>
                 </View>
                 
             </View>
