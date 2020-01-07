@@ -51,9 +51,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: Dimensions.get('window').width * 0.06,
-        //paddingLeft: 30,
-        //paddingRight: 30,
         marginRight: 10,
+        marginLeft: 15,
         maxWidth: Dimensions.get('window').width * 0.4,
         alignItems: 'center',
         justifyContent: 'center'
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
     thumb: {
         marginLeft: 15,
         marginRight: 10,
-        //paddingLeft: 15,
         width: Dimensions.get('window').height / 5.5,
         height: Dimensions.get('window').height / 5.5,
         borderRadius:1000
