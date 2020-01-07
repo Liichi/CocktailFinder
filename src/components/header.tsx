@@ -54,13 +54,13 @@ class Header extends React.Component<Props,State> {
             <View style={styles.header}>
                 {(this.props.searchText.length < 3) &&
                     <TouchableOpacity onPress={this.onBack}>
-                        <Icon name="md-arrow-back" color="#000" size={25} />
+                        <Icon name="md-arrow-back" color="#000" size={Dimensions.get('window').height / 25} />
                     </TouchableOpacity>
                 }
-                <SearchBar/>
+                <SearchBar style={styles.searchBar}/>
                 {(this.props.searchText.length > 2) &&
                     <TouchableOpacity onPress={this.onCancel}>
-                        <Icon2 name="cancel" color="#F00" size={25} />
+                        <Icon2 name="cancel" color="#F00" size={Dimensions.get('window').height / 25} />
                     </TouchableOpacity>
                 }
             </View>
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center'
+    },
+    searchBar : {
+        minHeight : '100%'
     }
 });
 

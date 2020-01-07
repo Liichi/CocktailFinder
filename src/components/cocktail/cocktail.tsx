@@ -14,8 +14,13 @@ class Cocktail extends React.Component<Props>{
     render() {
         return (
             <View style={styles.cocktail}>
-                <Image style={styles.thumb} source={{uri: this.props.data.thumbURL}}/>
-                <Text style={styles.title}>{this.props.data.name}</Text>
+                <View style={styles.column}>
+                    <Image style={styles.thumb} source={{uri: this.props.data.thumbURL}}/>
+                </View>
+                <View style={styles.column}>
+                    <Text style={styles.title}>{this.props.data.name}</Text>
+                </View>
+                
             </View>
         );
     }
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
         maxHeight: Dimensions.get('window').height / 4.5,
         minHeight: Dimensions.get('window').height / 4.5,
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     column: {
@@ -45,16 +50,21 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     title: {
-        fontSize: 20,
-        paddingLeft: 30,
-        paddingRight: 30,
-        maxWidth: '60%'
+        fontSize: Dimensions.get('window').width * 0.06,
+        //paddingLeft: 30,
+        //paddingRight: 30,
+        marginRight: 10,
+        maxWidth: Dimensions.get('window').width * 0.4,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     thumb: {
         marginLeft: 15,
-        width: 120,
-        height: 120,
-        borderRadius:500
+        marginRight: 10,
+        //paddingLeft: 15,
+        width: Dimensions.get('window').height / 5.5,
+        height: Dimensions.get('window').height / 5.5,
+        borderRadius:1000
     }
 });
 

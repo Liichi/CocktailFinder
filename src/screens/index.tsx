@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,Text,StyleSheet,TouchableOpacity,SafeAreaView} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity,SafeAreaView, Dimensions} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
@@ -23,14 +23,13 @@ class IndexScreen extends React.Component<Props> {
             <View style={styles.index}>
                 <LinearGradient start={{x: 1, y: 0}} end={{x: 0, y: 1}} colors={['#c81693','#e03c39']} style={styles.background} >
                     <SafeAreaView style={styles.index}>
-                        <Icon2 style={styles.cocktailIcon} name="cocktail" color="white" size={40} />
+                        <Icon2 style={styles.cocktailIcon} name="cocktail" color="white" size={Dimensions.get('window').height / 15} />
                         <Text style={styles.title}>
-                            <Text style={styles.titleBold}>Cocktail</Text>
-                            Finder
+                            <Text style={styles.titleBold}>Cocktail</Text>Finder
                         </Text>
                         <TouchableOpacity onPress={() => {this.handleSearch()}}>
                             <View style={styles.searchBar}>
-                                <Icon style={styles.searchIcon} name="ios-search" color="red" size={25} />
+                                <Icon style={styles.searchIcon} name="ios-search" color="red" size={Dimensions.get('window').height / 25} />
                                 <Text style={styles.searchText}>Search your favorite cocktail</Text>
                             </View>
                         </TouchableOpacity>
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontSize: 30,
+        fontSize: Dimensions.get('window').width * 0.085,
         fontWeight: '100',
         marginBottom: 15
     },
@@ -77,6 +76,7 @@ const styles = StyleSheet.create({
     searchText: {
         flex: 1,
         width: '100%',
+        fontSize: Dimensions.get('window').width * 0.04,
         marginLeft: 0
     },
     searchIcon: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     cocktailIcon: {
-        marginTop: 30,
+        marginTop: 40,
         marginBottom: 10
     }
 });

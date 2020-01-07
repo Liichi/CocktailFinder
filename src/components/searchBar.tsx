@@ -1,4 +1,4 @@
-import {TextInput, ActivityIndicator} from 'react-native';
+import {TextInput, ActivityIndicator, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React,{useEffect} from 'react';
 import {View,StyleSheet} from 'react-native';
@@ -53,7 +53,7 @@ class SearchBar extends React.Component<Props,State> {
     render() {
         return (
             <View style={styles.searchBar}>
-                <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={25} />
+                <Icon style={styles.searchIcon} name="ios-search" color="#ccc" size={Dimensions.get('window').height / 25} />
                 <TextInput value={this.props.searchText} onChangeText={text => this.onChangeText({ text })} style={styles.searchBar} placeholder='Search'/>
                 {this.props.isFetching &&
                     <ActivityIndicator size="large" color="#6b7585"/>
@@ -77,12 +77,14 @@ const styles = StyleSheet.create({
     searchBar: {
         flex: 1,
         maxWidth: '80%',
+        minHeight: '100%',
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#e8e8e8',
         borderRadius:6,
         borderWidth: 1,
-        borderColor: '#e8e8e8'
+        borderColor: '#e8e8e8',
+        fontSize: Dimensions.get('window').width * 0.04,
     },
     searchIcon: {
         marginLeft: 15,

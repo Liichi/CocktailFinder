@@ -6,9 +6,14 @@ Open terminal and run:
 npm install
 ```
 ### Run
+#### Linux
 ```sh
 npm start
-react-native run-android
+```
+#### Max
+```sh
+yarn install
+cd ios && pod install
 ```
 ### Libraries used
 * [react-native]
