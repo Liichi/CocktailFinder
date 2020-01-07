@@ -1,7 +1,7 @@
 import React,{} from 'react';
 import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions, Platform, KeyboardAvoidingView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
-import Header from '../../components/header';
+import Header from '../../components/header/header';
 import LinearGradient from 'react-native-linear-gradient';
 import Cocktail from '../../components/cocktail/cocktail'
 import { CocktailData } from '../../components/cocktail/cocktailData';

@@ -2,11 +2,12 @@ import {TextInput, ActivityIndicator, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React,{useEffect} from 'react';
 import {View,StyleSheet} from 'react-native';
-import {startFetch, ActionTypes} from '../actions/search'
+import {startFetch, ActionTypes} from '../../actions/search'
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
-import { RootState } from '../store/store';
+import { RootState } from '../../store/store';
+import styles from './styles';
 
 interface State {
     timer : any,
@@ -71,25 +72,6 @@ const mapStateToProps = (state: RootState, props: Props) => ({
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
     startFetch: bindActionCreators(startFetch, dispatch)
-});
-
-const styles = StyleSheet.create({
-    searchBar: {
-        flex: 1,
-        maxWidth: '80%',
-        minHeight: '100%',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#e8e8e8',
-        borderRadius:6,
-        borderWidth: 1,
-        borderColor: '#e8e8e8',
-        fontSize: Dimensions.get('window').width * 0.04,
-    },
-    searchIcon: {
-        marginLeft: 15,
-        marginRight: 10
-    }
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchBar);

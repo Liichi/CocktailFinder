@@ -3,12 +3,13 @@ import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import {NavigationParams,NavigationScreenProp,NavigationState} from 'react-navigation';
 import React,{} from 'react';
 import {View,StyleSheet,TouchableOpacity,BackHandler, Dimensions} from 'react-native';
-import SearchBar from './searchBar';
-import {RootState} from '../store/store'
+import SearchBar from '../searchBar/searchBar';
+import {RootState} from '../../store/store'
 import { ThunkDispatch } from 'redux-thunk';
-import { ActionTypes, startFetch } from '../actions/search';
+import { ActionTypes, startFetch } from '../../actions/search';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import styles from './styles';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>,
@@ -71,22 +72,6 @@ const mapStateToProps = (state: RootState, props: Props) => ({
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any,any,ActionTypes>, props: Props) => ({
     startFetch: bindActionCreators(startFetch, dispatch)
-});
-
-const styles = StyleSheet.create({
-    header: {
-        flex:1,
-        marginTop: 30,
-        minWidth: '100%',
-        minHeight: Dimensions.get('window').height / 15,
-        maxHeight: Dimensions.get('window').height / 15,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center'
-    },
-    searchBar : {
-        minHeight : '100%'
-    }
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header);
