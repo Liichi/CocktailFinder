@@ -1,5 +1,5 @@
 import React,{} from 'react';
-import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions} from 'react-native';
+import {View,SafeAreaView,StyleSheet,FlatList,Text, Dimensions, Platform, KeyboardAvoidingView} from 'react-native';
 import {NavigationParams,NavigationScreenProp,NavigationState,} from 'react-navigation';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
@@ -42,8 +42,7 @@ class SearchScreen extends React.Component<Props,State>{
                                 <Text style={styles.errorText}>Connection Error</Text>
                             </View>
                         }
-                        
-                        <View style={styles.body}>
+                        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : null} style={styles.body}>
                             <FlatList
                                 data={this.props.data}
                                 keyExtractor={(item, index) => item.id.toString()}
@@ -51,7 +50,7 @@ class SearchScreen extends React.Component<Props,State>{
                                     <Cocktail data={item.item}></Cocktail>
                                 )}
                             />
-                        </View>
+                        </KeyboardAvoidingView>
                     </SafeAreaView>
                 </LinearGradient>
             </View>
