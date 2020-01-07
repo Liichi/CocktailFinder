@@ -4,7 +4,7 @@ import {RootState} from '../store/store'
 import store from '../store/store';
 import {CocktailData} from '../components/cocktail/cocktailData';
 import { State } from 'react-native-gesture-handler';
-import SERVER_URL from '../../config'
+import Config from '../../config'
 
 export interface StartFetch {
     type: 'START_FETCH',
@@ -80,9 +80,9 @@ export const startFetch = (searchText: string): ThunkAction<void, RootState, nul
         dispatch(successFetchAction(searchText,[]));
         return;
     }
-
+    console.log(Config.API_URL);
     await fetch(
-        SERVER_URL+searchText, {}
+        Config.API_URL+searchText, {}
     ).then((resp) => {
         if(resp.ok)
             return resp.json();
