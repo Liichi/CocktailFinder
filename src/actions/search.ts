@@ -1,7 +1,6 @@
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux';
 import {RootState} from '../store/store'
-import store from '../store/store';
 import {CocktailData} from '../components/cocktail/cocktailData';
 import Config from '../../config'
 
