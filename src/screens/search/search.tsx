@@ -40,7 +40,7 @@ class SearchScreen extends React.Component<Props>{
                                 <Text style={styles.errorText}>Connection Error</Text>
                             </View>
                         }
-                        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : null} style={styles.body}>
+                        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : ''} style={styles.body}>
                             <FlatList
                                 data={data}
                                 renderItem={(item) => (
